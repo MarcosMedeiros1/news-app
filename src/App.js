@@ -7,13 +7,26 @@ import Home from "./Pages/Home/Home";
 function App() {
   const [noticias, setNoticias] = useState([]);
 
-  const key = "b52f2b64a6c148218837badeff20e403";
+  const key = "bquys1UXvGN0xhHWMjjF6YpOuAM5kES1tTToEFC8LOM";
 
   useEffect(() => {
     const getNoticias = async () => {
       const { data } = await axios.get(
-        `https://newsapi.org/v2/everything?q=Apple&from=2022-11-09&sortBy=popularity&apiKey=${key}`,
+        `https://api.newscatcherapi.com/v2/search`,
+        {
+          params: {
+            q: "brasil",
+            countries: "BR",
+            topic: "tech",
+            sort_by: "relevancy",
+            page: "1",
+          },
+          headers: {
+            "x-api-key": key,
+          },
+        },
       );
+      console.log(data);
       setNoticias(data.articles);
     };
     getNoticias();
