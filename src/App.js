@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Home from "./Pages/Home/Home";
 
 function App() {
+  const [noticias, setNoticias] = useState([]);
+
+  const key = "b52f2b64a6c148218837badeff20e403";
+
+  useEffect(() => {
+    const getNoticias = async () => {
+      const { data } = await axios.get(
+        `https://newsapi.org/v2/everything?q=Apple&from=2022-11-09&sortBy=popularity&apiKey=${key}`,
+      );
+      setNoticias(data.articles);
+    };
+    getNoticias();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home noticias={noticias} />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
