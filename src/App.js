@@ -25,7 +25,7 @@ function App() {
   const setup = async () => {
     try {
       const { data } = await axios.get(
-        "http://servicodados.ibge.gov.br/api/v3/noticias",
+        "https://servicodados.ibge.gov.br/api/v3/noticias",
       );
       // console.log(data.items);
       console.log(JSON.parse(data.items[0].imagens).image_fulltext);
