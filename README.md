@@ -1,6 +1,6 @@
 # News App
 
-A website made for a college discipline, using the [newscatcher API](https://newscatcherapi.com/).
+A website made for a college discipline, using the [IBGE News API](https://servicodados.ibge.gov.br/api/docs/noticias?versao=3).
 
 Deployed on vercel: https://ifnmg-news-app.vercel.app/
 
