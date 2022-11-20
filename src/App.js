@@ -7,29 +7,18 @@ import Home from "./Pages/Home/Home";
 function App() {
   const [noticias, setNoticias] = useState([]);
 
-  const key = "bquys1UXvGN0xhHWMjjF6YpOuAM5kES1tTToEFC8LOM";
-  // `https://api.newscatcherapi.com/v2/search`,
-  // {
-  //   params: {
-  //     q: "brasil",
-  //     countries: "BR",
-  //     topic: "tech",
-  //     sort_by: "relevancy",
-  //     page: "1",
-  //   },
-  //   headers: {
-  //     "x-api-key": key,
-  //   },
-  // },
-
   const setup = async () => {
     try {
       const { data } = await axios.get(
         "https://servicodados.ibge.gov.br/api/v3/noticias",
+        {
+          params: {
+            qtd: 200,
+          },
+        },
       );
-      // console.log(data.items);
-      console.log(JSON.parse(data.items[0].imagens).image_fulltext);
       setNoticias(data.items);
+      console.log(data.items);
     } catch (error) {
       console.log(error);
     }
