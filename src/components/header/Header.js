@@ -8,8 +8,9 @@ export const Header = styled.header`
   gap: 1rem;
   font-weight: 500;
 
+
   & > img {
     width: 100%;
-    max-width: 2rem;
+    max-width: 5rem;
   }
 `;
