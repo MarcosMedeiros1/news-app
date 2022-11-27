@@ -6,7 +6,7 @@ export const NoticiasContainer = styled.section`
   justify-content: center;
 
   @media (min-width: 768px) {
-    grid-template-columns: 700px;
+    grid-template-columns: 768px;
   }
 `;
 
@@ -20,13 +20,20 @@ export const Noticia = styled.div`
 
   border-bottom: 1px solid #eee;
 
-  & > img {
-    width: 100%;
+  & > a,
+  img {
     max-width: 150px;
   }
 
   @media (min-width: 375px) {
     margin: 0 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    & > a,
+    img {
+      max-width: 300px;
+    }
   }
 `;
 
@@ -35,19 +42,27 @@ export const NoticiaInfos = styled.div`
   align-content: start;
   gap: 1rem;
 
-  & > h3 {
+  & > a {
+    text-decoration: none;
+  }
+
+  & h3 {
     font-weight: 500;
     font-size: 1rem;
     color: #180e19;
+    transition: 0.2s;
+
+    &:hover {
+      text-decoration: underline;
+      color: #180e19ca;
+    }
   }
 
   & > div {
     display: flex;
     gap: 0.5rem;
 
-    & > span {
-      font-size: 0.8rem;
-
+    & > small {
       :first-child {
         font-weight: 500;
         color: #69bdfd;
@@ -60,13 +75,33 @@ export const NoticiaInfos = styled.div`
           height: 3px;
           border-radius: 100%;
           background-color: #909090;
-          top: 7px;
-          right: -7px;
+          top: 6px;
+          right: -6px;
         }
       }
 
       :last-child {
         color: #909090;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    & h3 {
+      font-size: 1.5rem;
+    }
+
+    & > div {
+      gap: 1rem;
+      & > span {
+        font-size: 1rem;
+
+        :first-child::after {
+          width: 4px;
+          height: 4px;
+          top: 10px;
+          right: -10px;
+        }
       }
     }
   }

@@ -4,10 +4,7 @@ export const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
-  gap: 1rem;
-  font-weight: 500;
-
+  padding: 0.5rem 1rem;
 
   & > img {
     width: 100%;
