@@ -4,6 +4,12 @@ export const NoticiasContainer = styled.section`
   display: grid;
   justify-items: start;
   justify-content: center;
+  margin-top: 4.2rem;
+
+  & > h2 {
+    margin-top: 2rem;
+    text-align: center;
+  }
 
   @media (min-width: 768px) {
     grid-template-columns: 768px;
@@ -93,7 +99,7 @@ export const NoticiaInfos = styled.div`
 
     & > div {
       gap: 1rem;
-      & > span {
+      & > small {
         font-size: 1rem;
 
         :first-child::after {

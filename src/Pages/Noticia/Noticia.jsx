@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import HeaderContainer from "../../components/header/HeaderContainer";
 import {
   NoticiaContainer,
@@ -6,6 +7,10 @@ import {
 } from "../../components/noticias/noticia";
 
 const Noticia = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (!localStorage.getItem("noticia")) {
     window.location.href = "/";
     return;
@@ -15,7 +20,7 @@ const Noticia = () => {
 
   return (
     <>
-      <HeaderContainer />
+      <HeaderContainer showSearch={false} />
       <NoticiaContainer>
         <NoticiaHeader>
           <img src={noticia.img} alt="Imagem da noticia" />

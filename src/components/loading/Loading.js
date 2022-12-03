@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Loading = styled.div`
   position: absolute;
-  top: 50vh;
-  left: 50vw;
+  top: 45vh;
+  left: 45vw;
   border: 4px solid rgb(255, 255, 255);
   border-left-color: #000;
   border-radius: 50%;

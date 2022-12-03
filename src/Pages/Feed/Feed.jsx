@@ -1,3 +1,4 @@
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HeaderContainer from "../../components/header/HeaderContainer";
 import {
@@ -5,16 +6,33 @@ import {
   NoticiaInfos,
   NoticiasContainer,
 } from "../../components/noticias/feedNoticias";
+import { NewsContext } from "../../context/NewsContext";
 
-const Feed = ({ noticias }) => {
+const Feed = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const { noticias } = useContext(NewsContext);
   const setNoticia = (img, titulo, data, introducao, link) => {
     const noticia = { img, titulo, data, introducao, link };
     localStorage.setItem("noticia", JSON.stringify(noticia));
   };
 
+  if (noticias.length <= 0) {
+    return (
+      <>
+        <HeaderContainer showSearch={true} />
+        <NoticiasContainer>
+          <h2>Nenhuma notícia encontrada</h2>
+        </NoticiasContainer>
+      </>
+    );
+  }
+
   return (
     <>
-      <HeaderContainer />
+      <HeaderContainer showSearch={true} />
       <NoticiasContainer>
         {noticias.map(
           ({

@@ -5,7 +5,7 @@ export const NoticiaContainer = styled.section`
   justify-items: start;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 4rem;
+  margin: 4.2rem 0;
 
   @media (min-width: 768px) {
     grid-template-columns: 768px;
