@@ -5,7 +5,8 @@ export const NoticiaContainer = styled.section`
   justify-items: start;
   justify-content: center;
   gap: 1rem;
-  margin: 4.2rem 0;
+  padding-top: 4.2rem;
+  background-color: ${(props) => props.backgroundColor};
 
   @media (min-width: 768px) {
     grid-template-columns: 768px;
@@ -13,6 +14,7 @@ export const NoticiaContainer = styled.section`
 
   & > p {
     padding: 0.5rem;
+    color: ${(props) => props.color};
   }
 `;
 
@@ -35,6 +37,7 @@ export const NoticiaHeader = styled.div`
 
     & > h2 {
       font-size: 1.5rem;
+      color: ${(props) => props.color};
     }
   }
 `;
@@ -43,6 +46,7 @@ export const NoticiaLink = styled.a`
   text-decoration: none;
   justify-self: center;
   padding: 12px 24px;
+  margin-bottom: 4.5rem;
   background-color: #daf0cb;
   color: #180e19;
   position: relative;

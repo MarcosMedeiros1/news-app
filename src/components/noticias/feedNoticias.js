@@ -4,7 +4,8 @@ export const NoticiasContainer = styled.section`
   display: grid;
   justify-items: start;
   justify-content: center;
-  margin-top: 4.2rem;
+  padding-top: 4.2rem;
+  background-color: ${(props) => props.backgroundColor};
 
   & > h2 {
     margin-top: 2rem;
@@ -24,11 +25,23 @@ export const Noticia = styled.div`
   margin: 0 0.2rem;
   position: relative;
 
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #102a44;
 
-  & > a,
-  img {
-    max-width: 150px;
+  & > div:first-of-type {
+    display: grid;
+    justify-items: start;
+    gap: 0.3rem;
+
+    & > a,
+    img {
+      max-width: 150px;
+    }
+
+    & > div {
+      @media (min-width: 375px) {
+        display: none;
+      }
+    }
   }
 
   @media (min-width: 375px) {
@@ -36,9 +49,11 @@ export const Noticia = styled.div`
   }
 
   @media (min-width: 768px) {
-    & > a,
-    img {
-      max-width: 300px;
+    & > div:first-of-type {
+      & > a,
+      img {
+        max-width: 300px;
+      }
     }
   }
 `;
@@ -55,39 +70,52 @@ export const NoticiaInfos = styled.div`
   & h3 {
     font-weight: 500;
     font-size: 1rem;
-    color: #180e19;
+    color: ${(props) => props.color || "#180e19"};
     transition: 0.2s;
 
     &:hover {
       text-decoration: underline;
-      color: #180e19ca;
     }
   }
 
   & > div {
     display: flex;
     gap: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
 
-    & > small {
-      :first-child {
-        font-weight: 500;
-        color: #69bdfd;
-        position: relative;
+    & > div {
+      display: none;
 
-        ::after {
-          position: absolute;
-          content: "";
-          width: 3px;
-          height: 3px;
-          border-radius: 100%;
-          background-color: #909090;
-          top: 6px;
-          right: -6px;
-        }
+      @media (min-width: 375px) {
+        display: flex;
       }
+    }
 
-      :last-child {
-        color: #909090;
+    & > div:first-child {
+      display: flex;
+      gap: 0.5rem;
+      & > small {
+        :first-child {
+          font-weight: 500;
+          color: #69bdfd;
+          position: relative;
+
+          ::after {
+            position: absolute;
+            content: "";
+            width: 3px;
+            height: 3px;
+            border-radius: 100%;
+            background-color: #909090;
+            top: 6px;
+            right: -6px;
+          }
+        }
+
+        :last-child {
+          color: #909090;
+        }
       }
     }
   }
@@ -109,6 +137,40 @@ export const NoticiaInfos = styled.div`
           right: -10px;
         }
       }
+    }
+  }
+`;
+
+export const ShareOptions = styled.div`
+  display: flex;
+  gap: 0.5rem;
+
+  & > a {
+    text-decoration: none;
+
+    & > svg {
+      transition: 0.2s;
+      font-size: 1.3rem;
+      color: ${(props) => props.color};
+
+      &:hover {
+        color: #25d366;
+      }
+    }
+  }
+
+  & > button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: ${(props) => props.color};
+    cursor: pointer;
+
+    & svg {
+      font-size: 1.1rem;
+      color: ${(props) => props.color};
     }
   }
 `;

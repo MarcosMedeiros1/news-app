@@ -8,6 +8,8 @@ const NewsProvider = ({ children }) => {
   const [noticias, setNoticias] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [backgroundColor, setBackgroundColor] = useState("#fff");
+  const [color, setColor] = useState("#2c3e50");
 
   const callNewsApi = async () => {
     try {
@@ -30,12 +32,24 @@ const NewsProvider = ({ children }) => {
 
   useEffect(() => {
     callNewsApi();
+    handleTheme();
   }, []);
 
   const handleSearch = () => {
     callNewsApi();
     setSearch("");
     setIsLoading(true);
+  };
+
+  const handleTheme = () => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "light") {
+      setBackgroundColor("#fff");
+      setColor("#180e19");
+    } else {
+      setBackgroundColor("#001122");
+      setColor("#fff");
+    }
   };
 
   if (isLoading) {
@@ -45,7 +59,15 @@ const NewsProvider = ({ children }) => {
   return (
     <>
       <NewsContext.Provider
-        value={{ noticias, handleSearch, search, setSearch }}
+        value={{
+          noticias,
+          handleSearch,
+          search,
+          setSearch,
+          handleTheme,
+          backgroundColor,
+          color,
+        }}
       >
         {children}
       </NewsContext.Provider>

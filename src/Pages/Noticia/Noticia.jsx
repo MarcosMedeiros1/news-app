@@ -1,12 +1,15 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import HeaderContainer from "../../components/header/HeaderContainer";
 import {
   NoticiaContainer,
   NoticiaHeader,
   NoticiaLink,
 } from "../../components/noticias/noticia";
+import { NewsContext } from "../../context/NewsContext";
 
 const Noticia = () => {
+  const { backgroundColor, color } = useContext(NewsContext);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -21,8 +24,8 @@ const Noticia = () => {
   return (
     <>
       <HeaderContainer showSearch={false} />
-      <NoticiaContainer>
-        <NoticiaHeader>
+      <NoticiaContainer backgroundColor={backgroundColor} color={color}>
+        <NoticiaHeader color={color}>
           <img src={noticia.img} alt="Imagem da noticia" />
 
           <div>
