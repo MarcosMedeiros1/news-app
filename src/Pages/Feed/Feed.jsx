@@ -61,6 +61,7 @@ const Feed = () => {
                         : ""
                     }`}
                     alt="Imagem da notícia"
+                    loading="lazy"
                   />
                 </Link>
                 <ShareOptionsContainer>
