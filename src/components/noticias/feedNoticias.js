@@ -13,6 +13,10 @@ export const NoticiasContainer = styled.section`
     text-align: center;
   }
 
+  @media (min-width: 500px) {
+    grid-template-columns: 500px;
+  }
+
   @media (min-width: 768px) {
     grid-template-columns: 768px;
   }
