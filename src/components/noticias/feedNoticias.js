@@ -39,7 +39,7 @@ export const Noticia = styled.div`
     }
 
     & > div {
-      @media (min-width: 375px) {
+      @media (min-width: 425px) {
         display: none;
       }
     }
@@ -88,7 +88,7 @@ export const NoticiaInfos = styled.div`
     & > div {
       display: none;
 
-      @media (min-width: 375px) {
+      @media (min-width: 425px) {
         display: flex;
       }
     }
@@ -138,40 +138,6 @@ export const NoticiaInfos = styled.div`
           right: -10px;
         }
       }
-    }
-  }
-`;
-
-export const ShareOptions = styled.div`
-  display: flex;
-  gap: 0.5rem;
-
-  & > a {
-    text-decoration: none;
-
-    & > svg {
-      transition: 0.2s;
-      font-size: 1.3rem;
-      color: ${(props) => props.color};
-
-      &:hover {
-        color: #25d366;
-      }
-    }
-  }
-
-  & > button {
-    background: none;
-    border: none;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    color: ${(props) => props.color};
-    cursor: pointer;
-
-    & svg {
-      font-size: 1.1rem;
-      color: ${(props) => props.color};
     }
   }
 `;

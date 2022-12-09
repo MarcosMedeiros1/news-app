@@ -1,15 +1,16 @@
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaCopy, FaWhatsapp } from "react-icons/fa";
 import HeaderContainer from "../../components/header/HeaderContainer";
 import {
   Noticia,
   NoticiaInfos,
   NoticiasContainer,
-  ShareOptions,
 } from "../../components/noticias/feedNoticias";
+import {
+  ShareOptions,
+  ShareOptionsContainer,
+} from "../../components/share/ShareOptions";
 import { NewsContext } from "../../context/NewsContext";
-import { Toast } from "../../components/toaster/Toast";
 
 const Feed = () => {
   useEffect(() => {
@@ -21,15 +22,6 @@ const Feed = () => {
   const setNoticia = (img, titulo, data, introducao, link) => {
     const noticia = { img, titulo, data, introducao, link };
     localStorage.setItem("noticia", JSON.stringify(noticia));
-  };
-
-  const copyLink = async (link) => {
-    let linkCopied = link;
-    await navigator.clipboard.writeText(linkCopied);
-    Toast.fire({
-      icon: "success",
-      title: "Link da notícia copiado",
-    });
   };
 
   return (
@@ -71,14 +63,9 @@ const Feed = () => {
                     alt="Imagem da notícia"
                   />
                 </Link>
-                <ShareOptions color={color}>
-                  <button onClick={() => copyLink(link)}>
-                    <FaCopy />
-                  </button>
-                  <a href={`whatsapp://send?text=${link}`}>
-                    <FaWhatsapp />
-                  </a>
-                </ShareOptions>
+                <ShareOptionsContainer>
+                  <ShareOptions link={link} title={titulo} />
+                </ShareOptionsContainer>
               </div>
 
               <NoticiaInfos color={color}>
@@ -107,14 +94,9 @@ const Feed = () => {
                     <small>{data_publicacao.split(" ")[0]}</small>
                   </div>
 
-                  <ShareOptions color={color}>
-                    <button onClick={() => copyLink(link)}>
-                      <FaCopy />
-                    </button>
-                    <a href={`whatsapp://send?text=${link}`}>
-                      <FaWhatsapp />
-                    </a>
-                  </ShareOptions>
+                  <ShareOptionsContainer color={color}>
+                    <ShareOptions link={link} title={titulo} />
+                  </ShareOptionsContainer>
                 </div>
               </NoticiaInfos>
             </Noticia>
