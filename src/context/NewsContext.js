@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { Loading } from "../components/loading/Loading";
+import { Toast } from "../components/toaster/Toast";
 
 const NewsContext = createContext();
 
@@ -14,15 +15,25 @@ const NewsProvider = ({ children }) => {
   const callNewsApi = async () => {
     try {
       const { data } = await axios.get(
-        "https://servicodados.ibge.gov.br/api/v3/noticias/?tipo=noticia",
+        "https://servicodados.ibge.gov.br/api/v3/noticias/",
         {
           params: {
             qtd: 200,
             introsize: 2500,
+            tipo: "noticia",
             busca: search,
           },
         },
       );
+
+      if (data.items.length <= 0) {
+        Toast.fire({
+          icon: "error",
+          title: "Nenhum resultado para sua busca",
+        });
+        setIsLoading(false);
+        return;
+      }
       setNoticias(data.items);
       setIsLoading(false);
     } catch (error) {

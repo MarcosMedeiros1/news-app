@@ -7543,7 +7543,7 @@ react-router@6.4.3:
   dependencies:
     "@remix-run/router" "1.0.3"
 
-react-scripts@5.0.1:
+react-scripts@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-5.0.1.tgz#6285dbd65a8ba6e49ca8d651ce30645a6d980003"
   integrity sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ==
@@ -8423,6 +8423,11 @@ svgo@^2.7.0:
     csso "^4.2.0"
     picocolors "^1.0.0"
     stable "^0.1.8"
+
+sweetalert2@^11.6.15:
+  version "11.6.15"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.6.15.tgz#0459e97100810b0734c62d2cce4d3d41c8f30b0a"
+  integrity sha512-FqMy1gRGHEI5G145NE5XSP059TziCJu9Xf9/mkki/aKu5pLNcYzjggOzKO5Ex10EBgAGDXQ99jyGfYYzGCYXRQ==
 
 symbol-tree@^3.2.4:
   version "3.2.4"

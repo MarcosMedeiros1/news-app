@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FaCopy, FaWhatsapp } from "react-icons/fa";
 import HeaderContainer from "../../components/header/HeaderContainer";
 import {
   Noticia,
@@ -8,7 +9,7 @@ import {
   ShareOptions,
 } from "../../components/noticias/feedNoticias";
 import { NewsContext } from "../../context/NewsContext";
-import { FaShareAlt, FaWhatsapp } from "react-icons/fa";
+import { Toast } from "../../components/toaster/Toast";
 
 const Feed = () => {
   useEffect(() => {
@@ -22,16 +23,14 @@ const Feed = () => {
     localStorage.setItem("noticia", JSON.stringify(noticia));
   };
 
-  if (noticias.length <= 0) {
-    return (
-      <>
-        <HeaderContainer showSearch={true} />
-        <NoticiasContainer>
-          <h2>Nenhuma notícia encontrada</h2>
-        </NoticiasContainer>
-      </>
-    );
-  }
+  const copyLink = async (link) => {
+    let linkCopied = link;
+    await navigator.clipboard.writeText(linkCopied);
+    Toast.fire({
+      icon: "success",
+      title: "Link da notícia copiado",
+    });
+  };
 
   return (
     <>
@@ -73,8 +72,8 @@ const Feed = () => {
                   />
                 </Link>
                 <ShareOptions color={color}>
-                  <button onClick={() => navigator.clipboard.writeText(link)}>
-                    <FaShareAlt />
+                  <button onClick={() => copyLink(link)}>
+                    <FaCopy />
                   </button>
                   <a href={`whatsapp://send?text=${link}`}>
                     <FaWhatsapp />
@@ -109,8 +108,8 @@ const Feed = () => {
                   </div>
 
                   <ShareOptions color={color}>
-                    <button onClick={() => navigator.clipboard.writeText(link)}>
-                      <FaShareAlt />
+                    <button onClick={() => copyLink(link)}>
+                      <FaCopy />
                     </button>
                     <a href={`whatsapp://send?text=${link}`}>
                       <FaWhatsapp />

@@ -6,12 +6,17 @@ import { useContext } from "react";
 import { NewsContext } from "../../context/NewsContext";
 
 const HeaderContainer = ({ showSearch }) => {
-  const { setSearch, handleSearch, handleTheme, headerBackground, color } =
-    useContext(NewsContext);
+  const { setSearch, handleSearch, handleTheme } = useContext(NewsContext);
 
   const changeTheme = (theme) => {
     localStorage.setItem("theme", theme);
     handleTheme();
+  };
+
+  const submitSearch = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
   };
 
   return (
@@ -25,13 +30,13 @@ const HeaderContainer = ({ showSearch }) => {
         </Link>
 
         {showSearch ? (
-          <SearchBar>
+          <SearchBar onKeyUp={(e) => submitSearch(e)}>
             <input
               placeholder="Pesquisar notícia"
               type="text"
-              onBlur={(e) => setSearch(e.target.value)}
+              onKeyDown={(e) => setSearch(e.target.value)}
             />
-            <button onClick={handleSearch}>
+            <button type="submit" onClick={() => handleSearch()}>
               <FaSearch />
             </button>
           </SearchBar>

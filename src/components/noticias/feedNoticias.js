@@ -4,6 +4,7 @@ export const NoticiasContainer = styled.section`
   display: grid;
   justify-items: start;
   justify-content: center;
+  min-height: 100vh;
   padding-top: 4.2rem;
   background-color: ${(props) => props.backgroundColor};
 
