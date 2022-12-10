@@ -5,6 +5,10 @@ import {
   NoticiaHeader,
   NoticiaLink,
 } from "../../components/noticias/noticia";
+import {
+  ShareOptions,
+  ShareOptionsContainer,
+} from "../../components/share/ShareOptions";
 import { NewsContext } from "../../context/NewsContext";
 
 const Noticia = () => {
@@ -30,7 +34,12 @@ const Noticia = () => {
 
           <div>
             <h2>{noticia.titulo}</h2>
-            <span>{noticia.data.split(" ")[0]}</span>
+            <span>
+              {noticia.data.split(" ")[0]}
+              <ShareOptionsContainer>
+                <ShareOptions link={noticia.link} title={noticia.titulo} />
+              </ShareOptionsContainer>
+            </span>
           </div>
         </NoticiaHeader>
         <p>{noticia.introducao}</p>

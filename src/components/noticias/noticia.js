@@ -32,6 +32,8 @@ export const NoticiaHeader = styled.div`
     padding: 0 0.5rem;
 
     & > span {
+      display: flex;
+      justify-content: space-between;
       color: #909090;
     }
 
